@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This Concepts</title>
+</head>
+<body>
+	<button id="demo">Click!</button>
+	<script>
+
+		//alone or ouside the function this refers to an global object the golbal context is "WINDOW"
+
+		//alone THIS refers to the Global Object like Window or global context and outside any function this "this" refers to global Object
+
+		//Global context this valu in console.log
+
+			console.log(this);
+
+		// in side the function the this value depends on how the function is called in this exapmle this value not this value so the default value is global object is WINDOW.
+				
+			function a(){
+				console.log(this);
+			}
+
+			a();	
+
+		//in methode the This value refers to an "OWNER OBJECT" the object name and this example methode have function so here the this value refers to the "OWNER OF OBJECT" is obj...
+
+			var obj={
+				name:"muthu",
+				age:23,
+				js:function(change){
+					console.log(this.name);
+					console.log(this.age);
+				}
+			};
+		//call the function 
+			obj.js();
+
+		//To set the value of this or change the value of this use call() and apply() function.
+
+		//call() and apply() similar they invole a function with a specified this context,and optional arguments
+
+		//call() syntax:function.call(this,arg1,arg2);
+
+		//the arguments as an list comma seprate.
+
+
+			function call(changevalue){
+				console.log(this);//window object
+				console.log(this.name);
+				console.log(this.age);
+				console.log(this.number);
+			}
+			//call();//remove the comments for default object.
+
+		//now change the this vlue inside the function using call() methode the value i will take obj or new object
+
+			var obj1={
+				name:"lingaraj",
+				age:23,
+				number:"1234567",
+			};
+
+			call.call(obj1);
+
+		//another way apply() methode the difference is arguments is an array
+			var obj2={
+				name:"raj",
+				age:25,
+				number:"1234567890",
+			};
+
+		//now change the value by using apply menthode
+			call.apply(obj2);
+
+		//change the owner of object value
+			var obj3={
+				name:"mlr",
+				age:26,
+			} ;
+			obj.js.call(obj3);
+				//or
+			obj.js.apply(obj3);	
+		//same value 
+		//NOTE:both call() and bind() are one-time use methode.
+
+		class cars{
+			constructor(){
+				console.log(this);
+			}
+		}
+
+		var v= new cars();
+		console.log(v);
+
+		//this in addeventlistener ,the this value set to the element on which listner is placed,in event this refers to the element.
+
+		document.getElementById('demo').addEventListener("Click",fun);
+
+		function fun(event){
+			console.log(this)
+		}
+
+	</script>
+</body>
+</html>
