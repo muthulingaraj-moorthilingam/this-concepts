@@ -4,6 +4,7 @@
 	<title>This Concepts</title>
 </head>
 <body>
+	<span> Concept of This in Events or addeventlistener:</span>
 	<button id="demo">Click!</button>
 	<script>
 
@@ -95,11 +96,23 @@
 
 		//this in addeventlistener ,the this value set to the element on which listner is placed,in event this refers to the element.
 
-		document.getElementById('demo').addEventListener("Click",fun);
+		document.getElementById("demo").addEventListener('click',event_fun);
 
-		function fun(event){
-			console.log(this)
+		function event_fun(e){
+			//check the this value and target
+			if(this===e.target){
+			console.log(this === e.target);
+			console.log(e.target);
+			console.log(this);
+			console.log(e);
+			alert(this.id);
+			}
+		//use the this change the button colors
+			this.style.backgroundColor="lime";
+			this.style.color="red";
+			this.style.fontSize="24px";
 		}
+
 
 	</script>
 </body>
